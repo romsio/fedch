@@ -7,19 +7,19 @@ fetch('https//jsonplaceholder.typicode.com/posts/')
 
 
 
-function fetchData(){
+    function fetchData(){
     return new Promise(resolve =>{
      setTimeout(() => {
         resolve('Data has been fetched')   
     },2000);
 })
 }
-async function run(){
-let result = await fetcheData()
-console.log(result);
-}
+    async function run(){
+    let result = await fetcheData()
+    console.log(result);
+    }
 
-run()*/
+    run()*/
 
 //exercice1 du formateur
 
@@ -35,34 +35,29 @@ run()*/
  // ajoute 1 a l'index
  //
  //
- // for(i = 0 < myArray.length;i++){
- // let para = document.createElement('p')
- // para.append(myArray[1])
- // document.body.append(para) 
- // }
- // for const element.querySelector('test's)
- //
- //
- //
- //
- //
- //
- //exercice2
- //let chiffre=[1,2,3,4,5,6,7,8,9,10]
- //for (let index = 0; index < chiffre.length; index++) {
-//console.log(index);
-//}
-//exercice3
-// let chiffre=[1,2,3,4,5,6,7,8,9,10]
-//  for (let index = 0; index < chiffre.length; index++) {
-// console.log(index +1);
-// }
-// exercice4
-//let chiffre=[1,2,3,4,5,6,7,8,9,10]
+    // for(i = 0 < myArray.length;i++){
+    // let para = document.createElement('p')
+    // para.append(myArray[1])
+    // document.body.append(para) 
+    // }
+    // for const element.querySelector('test's)
+ 
+    //exercice2
+    //let chiffre=[1,2,3,4,5,6,7,8,9,10]
+    //for (let index = 0; index < chiffre.length; index++) {
+    //console.log(index);
+    //}
+    //exercice3
+    // let chiffre=[1,2,3,4,5,6,7,8,9,10]
+    //  for (let index = 0; index < chiffre.length; index++) {
+    // console.log(index +1);
+    // }
+    // exercice4
+    //let chiffre=[1,2,3,4,5,6,7,8,9,10]
 
-//for (let index = 0; index < chiffre.length; index++){
-  //console.log('table de'+''+(index +1));
-  
+    //for (let index = 0; index < chiffre.length; index++){
+    //console.log('table de'+''+(index +1));
+    
     //}
     //for(let i =0; i<chiffre.length;i++){
     //console.log('table de'+''+(i +1)) 
@@ -79,7 +74,8 @@ run()*/
 //let  para =document.createElement()
  //}
  
- let results = [
+ //tableau results
+ /*let results = [
     {
         "adult": false,
         "backdrop_path": "/5DCIRgOrCTayoCGggVn1kyqs1Vh.jpg",
@@ -492,19 +488,117 @@ run()*/
     "vote_average": 7.3,
     "vote_count": 16
     }
- ]
+    ]*/
     
     // for (let index =0 ;index < results.length; index++){
     // console.log( results[0].original_title)    
     // console.log(results[index].original_title);
     // }
-
-    results.map(film => (
+       
+        // le inner HTML remplace tout le contenu de la section1  }moviesDiplay();
+        
+        // le inner HTML remplace tout le contenu de la section1  }
+    // movies = await fetch(ApiUri).then((response) => response.json())
+    // console.log(movies.results)
+    // }
+    
+    
+    
+    
+    /*results.map((film => (
         console.log(film.original_title),
         console.log(film.poster_path),
         (film.vote_average>=5)?console.log("le film est bon"): console.log("le film est nul")
-    ))
+    
+    ));
+    */
+    //vare age=37/2;
+    //section.innerhtml=`<p> le double de mon age est $ {calcul}</p>`;
+    //section.innerhtml=`<h2> le double de mon age est $ {calcul}</h2>`;  
+    //
+    //Méthode avec la boucle for
+    //for(let x = 0; x < results.lenght; x++){
+    //console.log(results[x].vote_average);
+    //console.log("ce film est bon");    
+    //}
+    //else{
+    // console.log("ce film est nul");   
+    // }
+    //
+    // dans mon tableau de type results 
+    // if(results[0].vote_average >5){
+    //     console.log("bon film");
+    // }
+    // else {
+    //     console.log("mauvais film");
+    // }
+    //en condition ternaire
+    // (results[0].vote_average>5?console.log("bon film"):console.log("mauvais film"))
+    
 
-    var age=37/2;
-    section.innerhtml=`<p> le double de mon age est $ {calcul}</p>`;
-    section.innerhtml=`<h2> le double de mon age est $ {calcul}</h2>`;  
+    // fetch(`https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&query=${movie}`).then(reponse =>console.log(reponse.json().results));
+    // transformer la reponse json en objet javascript
+    const ApiKey = '3aa6970a57e694fc61a86fcf810ba744' 
+    let movies = []
+    let movie = "code"
+    let section=document.getElementById(section1);
+
+    const fetchMovies = async ()=>{
+        const ApiUri = `https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&query=${movie='code'}`
+        movies = await fetch(ApiUri).then((response) => response.json())
+        console.log(results.results[0].original_title)
+    }
+    fetchMoviesDisplay = async ()=>{
+        await fetchMovies()
+        section.innerHTML = results.map(film => <h2>Le nom du film est $ {film.original_title}</h2>)
+    
+
+        //CORRECTION
+        /fetchMovie();const moviesDiplay = async ()=>{
+            await fetchMovie()
+            section.innerHTML = results.results.map(film =>`
+        <h2>Le nom du film est ${film.original_title}</h2>
+        <img src="https://image.tmdb.org/t/p/w200${film.poster_path}" alt="">
+        <p>vote average est: ${film.vote_average}/10 ${ (film.vote_average>=5)?('<i class="fa-solid fa-thumbs-up"></i>'):('<i class="fa-solid fa-thumbs-down"></i>')}</p>
+        ` ).join('');
+        moviesDiplay();
+
+        fetchMovie();const moviesDiplay = async ()=>{
+            await fetchMovie()
+            section.innerHTML = results.results.map(film =>`
+        <h2>Le nom du film est ${film.original_title}</h2>${(film.poster_path == undefined)?('<img src="./img/image1.jpg" alt="image_de_montagne">'):('<img src="https://image.tmdb.org/t/p/w200'+ film.poster_path +'" alt="">')}
+        <p>vote average est: ${film.vote_average}/10 ${ (film.vote_average>=5)?('<i class="fa-solid fa-thumbs-up"></i>'):('<i class="fa-solid fa-thumbs-down"></i>')}</p>
+        ` ).join('');
+        
+         //arrow function
+        // we remove the function keyword and put directly the parameters() followed by => that points to the function body surrounded by {}
+        // works "inside a structure" and cannot be called "outside"
+        const plantNeedsWaters = (day) => {
+    if (day === 'Wednesday') {
+      return true;
+    } else {
+      return false;
+    }
+    };
+    //concise body arrow functions
+    // arrow function ZERO parameters
+    const functionNameZeroParameters = () => {console.log("hello world")};
+    functionNameZeroParameters(); // prints hello world  // arow with ONE parameters and single line block
+    // no need curly braces ()one parameter
+    // and no need {}, no need return because it is reffered as implicit return single line block
+    const plantNeedsWaterss = day => day === 'Wednesday' ? true :false;
+    console.log(plantNeedsWaterss('Wednesday')); //true
+
+    const form= document.querySelector('form')
+    const input=document.getElementById('input')
+    
+
+    const moviesDiplay = async ()=>{
+        await fetchMovie()
+      }
+        formSubmit.addEventListener('submit', e => {
+            e.preventDefault()
+            movie = valueInput.value
+            console.log(movie);
+            moviesDiplay()
+          })
